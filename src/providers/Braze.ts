@@ -40,7 +40,10 @@ const transform = (datum: FormattedDataItem): FormattedDataItem => {
 const parse = (rwrd: RawWebRequestData): FormattedDataGroup[] => {
   switch (rwrd.requestType) {
     case "GET":
-      return [createFormattedDataFromObject(rwrd.requestParams)];
+        console.log(
+            `GET support for ${Braze.canonicalName} is not implemented.`,
+          );
+        //return [createFormattedDataFromObject(rwrd.requestParams)];
     case "POST":
       console.log(
         `POST support for ${Braze.canonicalName} is not implemented.`,
