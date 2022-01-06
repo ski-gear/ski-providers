@@ -1,8 +1,8 @@
 {
-  "name": "ski-providers",
-  "version": "2.0.0",
-  "description": "Analytics Providers for Ski Goggles and related projects",
-  "author": "prem.pillai@gmail.com",
+  "name": "ski-vendors",
+  "version": "1.0.1",
+  "description": "Analytic and Marketing vendors for Ski Goggles and related projects",
+  "author": "shawn.foo@gmail.com",
   "license": "MIT",
   "repository": "https://github.com/ski-gear/ski-providers",
   "homepage": "https://github.com/ski-gear/ski-providers",
