@@ -59,7 +59,8 @@ export type ProviderCanonicalName =
   | "Krux"
   | "Rubicon"
   | "GoogleAnalytics"
-  | "Facebook";
+  | "Facebook"
+  | "Braze";
 
 export type Version = string;
 
