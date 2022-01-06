@@ -18,7 +18,7 @@ const transformer = (rwrd: RawWebRequestData): FormattedWebRequestData[] => {
   return map((fdg: FormattedDataGroup) => {
     const sorted: FormattedDataGroup = sortBy(
       prop("label"),
-      map(transform, fdg),
+      map(transform, fdg)
     );
     return setTitle("Ad Load Request", sorted);
   }, parse(rwrd));
@@ -38,7 +38,7 @@ const parse = (rwrd: RawWebRequestData): FormattedDataGroup[] => {
       return [createFormattedDataFromObject(rwrd.requestParams)];
     case "POST":
       console.log(
-        `POST support for ${Rubicon.canonicalName} is not implemented.`,
+        `POST support for ${Rubicon.canonicalName} is not implemented.`
       );
       return [];
     default:
