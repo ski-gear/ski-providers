@@ -43,7 +43,7 @@ const parse = (rwrd: RawWebRequestData): FormattedDataGroup[] => {
         console.log(
             `GET support for ${Braze.canonicalName} is not implemented.`,
           );
-        //return [createFormattedDataFromObject(rwrd.requestParams)];
+        // return [createFormattedDataFromObject(rwrd.requestParams)];
     case "POST":
       console.log(
         `POST support for ${Braze.canonicalName} is not implemented.`,
