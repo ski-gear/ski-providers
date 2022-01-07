@@ -30,11 +30,11 @@ describe("Adobe Analytics Manager", () => {
             const rwrd: GetRequest = {
               url: "http://someurl.tld",
               requestType: "GET",
-              requestParams: { pe: "link_o" },
+              requestParams: { pe: "lnk_o", pev2: "personalised_impression" },
             };
             const transformed = AdobeAnalyticsAppMeasurement.transformer(rwrd);
-            it("returns the label Unknown Event", () => {
-              expect(path(["meta", "title"], transformed[0])).to.eql("Unknown Event");
+            it("returns the label personalised_impression", () => {
+              expect(path(["meta", "title"], transformed[0])).to.contain("personalised_impression");
             });
           });
 

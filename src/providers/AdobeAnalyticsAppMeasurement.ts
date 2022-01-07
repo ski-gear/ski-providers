@@ -26,13 +26,14 @@ import {
 } from "../types/Types";
 
 const LINK_TYPE = "Link type";
+const LINK_NAME = "Link name";
 const EVENTS = "Events";
 
 const transformer = (rwrd: RawWebRequestData): FormattedWebRequestData[] => {
   return map((fdg: FormattedDataGroup) => {
     const sorted: FormattedDataGroup = sortBy(
       prop("label"),
-      map(transform, fdg),
+      map(transform, fdg)
     );
     return setTitle(getEventName(sorted), sorted);
   }, parse(rwrd));
@@ -49,17 +50,26 @@ export const AdobeAnalyticsAppMeasurement: Provider = {
 const getEventName = (params: FormattedDataItem[]): string | null => {
   const isCustomEvent = contains(
     LINK_TYPE,
-    map(p => prop("label", p), params),
+    map((p) => prop("label", p), params)
+  );
+  const linkRow = defaultTo(
+    {},
+    find((p) => p.label === LINK_NAME, params)
   );
   const eventRow = defaultTo(
     {},
-    find(e => e.label == EVENTS, params),
+    find((e) => e.label === EVENTS, params)
   );
 
   const eventName: string = propOr("Unknown Event", "value", eventRow);
-  if (isCustomEvent) {
+  const linkName: string = propOr("Unknown Link Type", "value", linkRow);
+
+  if (isCustomEvent && isEmpty(eventRow)) {
+    return linkName;
+  } else if (isCustomEvent && !isEmpty(eventRow)) {
     return eventName;
   } else {
+    // Edit this to get rid of events showing in the accordion title
     return isEmpty(eventRow) ? "Page Load" : `Page Load (${eventName})`;
   }
 };
@@ -154,4 +164,10 @@ const LabelDictionary: LabelDictionary = {
   xact: "Transaction ID",
   zip: "ZIP/Postal code",
   rsid: "Report Suites",
+  pf: "Platform Flag",
+  mcorgid: "Marketing Cloud Organization ID",
+  sdid: "Supplemental ID",
+  AQB: "Image request query string start flag",
+  AQE: "Image request query string end flag",
+  aamlh: "Audience Manager location hint",
 };
