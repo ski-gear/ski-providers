@@ -1,8 +1,11 @@
 import { map, prop, sortBy } from "ramda";
+import when from "when-switch";
 import {
   createFormattedDataFromObject,
   labelReplacerFromDictionary,
+  parseRawString,
   setTitle,
+  stringFromBytesBuffer,
 } from "../PrivateHelpers";
 import {
   FormattedDataGroup,
@@ -12,6 +15,8 @@ import {
   Provider,
   RawWebRequestData,
 } from "../types/Types";
+
+const DATA_LABEL = "events and respond_with";
 
 const transformer = (rwrd: RawWebRequestData): FormattedWebRequestData[] => {
   return map((fdg: FormattedDataGroup) => {
@@ -40,21 +45,19 @@ const transform = (datum: FormattedDataItem): FormattedDataItem => {
 const parse = (rwrd: RawWebRequestData): FormattedDataGroup[] => {
   switch (rwrd.requestType) {
     case "GET":
-        console.log(
-            `GET support for ${Braze.canonicalName} is not implemented.`,
-          );
-        // return [createFormattedDataFromObject(rwrd.requestParams)];
+      return [createFormattedDataFromObject(rwrd.requestParams)];
     case "POST":
-      console.log(
-        `POST support for ${Braze.canonicalName} is not implemented.`,
-      );
+      const raw = stringFromBytesBuffer(rwrd.requestBody.raw[0].bytes);
+      return [createFormattedDataFromObject(parseRawString(raw))];
     default:
       return [];
   }
 };
 
-const categorize = (_label: string): string | null => {
-  return null;
+const categorize = (label: string): string | null => {
+  return when(label)
+  .match(/^events$/i, DATA_LABEL)
+  .else(null);
 };
 
 const labelReplacer = (label: string): string => {
@@ -63,4 +66,7 @@ const labelReplacer = (label: string): string => {
 
 const LabelDictionary: LabelDictionary = {
   lg: "Language",
+  n: "Custom event name",
+  p: "Custom event property",
+  api_key: "API Key",
 };

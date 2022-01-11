@@ -38,13 +38,13 @@ const GoogleAnalytics: Provider = {
 const getEventName = (params: FormattedDataItem[]): string | null => {
   const hitTypeRow = defaultTo(
     {},
-    find(e => e.label == HIT_TYPE, params),
+    find(e => e.label === HIT_TYPE, params),
   );
   const hitType: string = propOr(null, "value", hitTypeRow);
 
   const eventRow = defaultTo(
     {},
-    find(e => e.label == EVENT_ACTION, params),
+    find(e => e.label === EVENT_ACTION, params),
   );
   const eventName: string = propOr(null, "value", eventRow);
 

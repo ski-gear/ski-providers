@@ -28,12 +28,13 @@ import {
 const LINK_TYPE = "Link type";
 const LINK_NAME = "Link name";
 const EVENTS = "Events";
+const DATA_LABEL = "Evars, Props, and Lists";
 
 const transformer = (rwrd: RawWebRequestData): FormattedWebRequestData[] => {
   return map((fdg: FormattedDataGroup) => {
     const sorted: FormattedDataGroup = sortBy(
       prop("label"),
-      map(transform, fdg)
+      map(transform, fdg),
     );
     return setTitle(getEventName(sorted), sorted);
   }, parse(rwrd));
@@ -48,17 +49,18 @@ export const AdobeAnalyticsAppMeasurement: Provider = {
 };
 
 const getEventName = (params: FormattedDataItem[]): string | null => {
+  // Custom Event refers to a custom link in Adobe
   const isCustomEvent = contains(
     LINK_TYPE,
-    map((p) => prop("label", p), params)
+    map((p) => prop("label", p), params),
   );
   const linkRow = defaultTo(
     {},
-    find((p) => p.label === LINK_NAME, params)
+    find((p) => p.label === LINK_NAME, params),
   );
   const eventRow = defaultTo(
     {},
-    find((e) => e.label === EVENTS, params)
+    find((e) => e.label === EVENTS, params),
   );
 
   const eventName: string = propOr("Unknown Event", "value", eventRow);
@@ -91,8 +93,6 @@ const transform = (datum: FormattedDataItem): FormattedDataItem => {
   const label: string = labelReplacer(datum.label);
   return { label, value: datum.value, formatting: "string", category };
 };
-
-const DATA_LABEL = "Evars, Props, and Lists";
 
 const categorize = (label: string): string | null => {
   return when(label)

@@ -97,8 +97,8 @@ const getEventRow = (
 
 const getTitleFromUePx = (params: FormattedDataItem[]): string => {
   try {
-    const ue_px_row = find(e => propEq("label", EVENT_PAYLOAD, e), params);
-    const json = JSON.parse(propOr({}, "value", ue_px_row));
+    const UE_PX_ROW = find(e => propEq("label", EVENT_PAYLOAD, e), params);
+    const json = JSON.parse(propOr({}, "value", UE_PX_ROW));
     return pathOr("Unknown Event", ["data", "data", "event_name"], json);
   } catch (e) {
     return "Unparseable Event";
