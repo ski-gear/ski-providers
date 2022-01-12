@@ -56,7 +56,7 @@ export const Mixpanel: Provider = {
 const getEventName = (data: FormattedDataItem[]): string => {
   const eventRow = defaultTo(
     {},
-    find(e => e.label == "Event", data),
+    find(e => e.label === "Event", data),
   );
   const trackEventName: string = propOr(null, "value", eventRow);
   if (not(isNil(trackEventName))) {
@@ -113,7 +113,7 @@ const buildNestedFormattedData = (
   return concat(data, createFormattedDataFromObject(dissoc("data", raw)));
 };
 
-const categorize = (_label: string): string | null => {
+const categorize = (label: string): string | null => {
   return null;
 };
 

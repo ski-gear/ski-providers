@@ -33,7 +33,7 @@ export const Krux: Provider = {
 };
 
 const getEventName = (params: FormattedDataItem[]): string | null => {
-  const row = find(e => e.label == "fired", params);
+  const row = find(e => e.label === "fired", params);
   const eventName: string | null = propOr(null, "value", row);
   return defaultTo("Page View", eventName);
 };
