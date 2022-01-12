@@ -13,18 +13,18 @@ describe("Braze Manager", () => {
         requestType: "POST",
         requestBody: {
           raw: [
-            { bytes: BrazePostRequestDataBytes }
-          ]
+            { bytes: BrazePostRequestDataBytes },
+          ],
         },
       };
       const transformed = Braze.transformer(rwrd);
       console.log(transformed);
       console.log(transformed[0]);
-      it("returns the title: Braze Event", () => {
-        expect(path(["meta", "title"], transformed[0])).to.eql("Braze Event");
+      it("returns the title: consumer_property_owner_dashboard_viewed", () => {
+        expect(path(["meta", "title"], transformed[0])).to.eql("consumer_property_owner_dashboard_viewed");
       });
       it("returns a defined data payload", () => {
-        expect(path(["meta", "data"], transformed[0])).to.exist;
+        expect(path(["data"], transformed[0])).to.exist;
       });
     });
   });

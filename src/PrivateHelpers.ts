@@ -34,7 +34,7 @@ export const createFormattedDataFromObject = (
 };
 
 export const parseRawString = (str: string): BasicKeyValueObject => {
-	return querystring.parse(str) as BasicKeyValueObject;
+  return querystring.parse(str) as BasicKeyValueObject;
 };
 
 export const stringFromBytesBuffer = (bytes: number[]): string => {

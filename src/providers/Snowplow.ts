@@ -29,6 +29,7 @@ import {
 
 const EVENT_PAYLOAD = "Event Payload";
 const EVENT = "Event";
+const DATA_LABEL = "Data";
 
 const transformer = (rwrd: RawWebRequestData): FormattedWebRequestData[] => {
   return map((fdg: FormattedDataGroup) => {
@@ -121,8 +122,6 @@ const transform = (datum: FormattedDataItem): FormattedDataItem => {
     };
   }
 };
-
-const DATA_LABEL = "Data";
 
 const categorize = (label: string): string | null => {
   if (contains(label, ["cx", "ue_px"])) {
