@@ -50,7 +50,7 @@ const parse = (rwrd: RawWebRequestData): FormattedDataGroup[] => {
   }
 };
 
-const categorize = (_label: string): string | null => {
+const categorize = (label: string): string | null => {
   return null;
 };
 

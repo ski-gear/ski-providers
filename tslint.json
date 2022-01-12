@@ -5,7 +5,8 @@
   "rules": {
     "interface-name": [false, "always-prefix"],
     "no-var-requires": false,
-    "arrow-parens": false
+    "arrow-parens": false,
+    "object-literal-sort-keys": false
   },
   "rulesDirectory": []
 }

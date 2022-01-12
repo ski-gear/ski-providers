@@ -29,6 +29,7 @@ import {
 
 const EVENT_PAYLOAD = "Event Payload";
 const EVENT = "Event";
+const DATA_LABEL = "Data";
 
 const transformer = (rwrd: RawWebRequestData): FormattedWebRequestData[] => {
   return map((fdg: FormattedDataGroup) => {
@@ -97,8 +98,8 @@ const getEventRow = (
 
 const getTitleFromUePx = (params: FormattedDataItem[]): string => {
   try {
-    const ue_px_row = find(e => propEq("label", EVENT_PAYLOAD, e), params);
-    const json = JSON.parse(propOr({}, "value", ue_px_row));
+    const UE_PX_ROW = find(e => propEq("label", EVENT_PAYLOAD, e), params);
+    const json = JSON.parse(propOr({}, "value", UE_PX_ROW));
     return pathOr("Unknown Event", ["data", "data", "event_name"], json);
   } catch (e) {
     return "Unparseable Event";
@@ -121,8 +122,6 @@ const transform = (datum: FormattedDataItem): FormattedDataItem => {
     };
   }
 };
-
-const DATA_LABEL = "Data";
 
 const categorize = (label: string): string | null => {
   if (contains(label, ["cx", "ue_px"])) {
