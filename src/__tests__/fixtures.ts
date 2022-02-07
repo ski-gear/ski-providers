@@ -43,6 +43,10 @@ export const matchedUrls = [
     url: "https://api-js.mixpanel.com/engage/?ip=1&_=1579751930160",
   },
   {
+    provider: "TealiumIQ",
+    url: "https://tags.tiqcdn.com/utag/rea-group/main/qa/utag.js",
+  },
+  {
     provider: null,
     url: "https://www.google.com/",
   },
