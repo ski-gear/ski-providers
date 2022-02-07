@@ -27,7 +27,7 @@ const transformer = (rwrd: RawWebRequestData): FormattedWebRequestData[] => {
 export const TealiumIQ: Provider = {
   canonicalName: "TealiumIQ",
   displayName: "TealiumIQ",
-  logo: "tealiumiq2.png",
+  logo: "tealiumiq.png",
   pattern: /tags\.tiqcdn\.com\/utag\/.*\/.*\/.*\/utag\.js$/,
   transformer,
 };
