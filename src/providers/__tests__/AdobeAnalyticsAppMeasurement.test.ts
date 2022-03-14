@@ -18,8 +18,7 @@ describe("Adobe Analytics Manager", () => {
         },
       };
       const transformed = AdobeAnalyticsAppMeasurement.transformer(rwrd);
-      //console.log(transformed);
-      //console.log(transformed[0]);
+
       it("returns the label Unknown Event", () => {
         expect(path(["meta", "title"], transformed[0])).to.eql("Page Load (event19:1528284525qjrci3uu,event10:1528284525qy6wdtcx,event4:1528284525qy6wdtcx,event12)");
       });
