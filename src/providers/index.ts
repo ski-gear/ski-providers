@@ -7,3 +7,4 @@ export { Mixpanel } from "./Mixpanel";
 export { GoogleAnalytics } from "./GoogleAnalytics";
 export { Facebook } from "./Facebook";
 export { Braze } from "./Braze";
+export { TealiumIQ } from "./TealiumIQ";

@@ -18,8 +18,7 @@ describe("Braze Manager", () => {
         },
       };
       const transformed = Braze.transformer(rwrd);
-      console.log(transformed);
-      console.log(transformed[0]);
+
       it("returns the title: consumer_property_owner_dashboard_viewed", () => {
         expect(path(["meta", "title"], transformed[0])).to.eql("consumer_property_owner_dashboard_viewed");
       });

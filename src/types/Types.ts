@@ -60,7 +60,8 @@ export type ProviderCanonicalName =
   | "Rubicon"
   | "GoogleAnalytics"
   | "Facebook"
-  | "Braze";
+  | "Braze"
+  | "TealiumIQ";
 
 export type Version = string;
 

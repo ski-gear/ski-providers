@@ -12,7 +12,11 @@ describe('Smoke Test', () => {
                     'AdobeAnalyticsAppMeasurement',
                     'Rubicon',
                     'Nielsen',
-                    'GoogleAnalytics'
+                    'GoogleAnalytics',
+                    'Facebook',
+                    'Mixpanel',
+                    'Braze',
+                    'TealiumIQ'
                 ]
             );
         });
@@ -21,6 +25,12 @@ describe('Smoke Test', () => {
     describe('SkiProviderHelpers', () => {
         it('is exported correctly', () => {
             expect(SkiProviderHelpers.lookup('Snowplow').canonicalName).to.eql('Snowplow');
+        });
+    });
+
+    describe('SkiProviderHelpers', () => {
+        it('is exported correctly', () => {
+            expect(SkiProviderHelpers.lookup('TealiumIQ').canonicalName).to.eql('TealiumIQ');
         });
     });
 });
